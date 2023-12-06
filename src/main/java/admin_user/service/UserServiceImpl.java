@@ -1,7 +1,7 @@
 package admin_user.service;
 
 import admin_user.model.Role;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,19 +10,16 @@ import admin_user.model.User;
 import admin_user.repositories.UserRepository;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-	
-	@Autowired
-	private UserRepository userRepository;
+	private final PasswordEncoder passwordEncoder;
+	private final UserRepository userRepository;
 
 	@Override
 	public User save(UserDto userDto) {
 
 		User user = new User(
-				userDto.getEmail(),
+				userDto.getUsername(),
 				passwordEncoder.encode(userDto.getPassword()) ,
 				Role.USER
 		);

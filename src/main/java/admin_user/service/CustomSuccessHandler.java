@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.stereotype.Service;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,8 +19,7 @@ public class CustomSuccessHandler implements AuthenticationSuccessHandler {
 			HttpServletResponse response,
 			Authentication authentication
 	) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		
+
 		var authorities = authentication.getAuthorities();
 		var roles = authorities.stream().map(GrantedAuthority::getAuthority).findFirst();
 		

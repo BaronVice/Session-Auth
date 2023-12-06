@@ -20,14 +20,12 @@ public class AuthController {
             HttpServletRequest request,
             HttpServletResponse response
     ){
-        System.out.println("Here");
-
-        return ResponseEntity.ok(
-                service.authenticate(
-                        loginRequest,
-                        request,
-                        response
-                )
+        service.authenticate(
+                loginRequest,
+                request,
+                response
         );
+
+        return ResponseEntity.ok().build();
     }
 }
